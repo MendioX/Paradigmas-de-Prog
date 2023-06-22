@@ -1,0 +1,46 @@
+
+data Persona = Persona {
+  nombrePersona :: String,
+  suerte :: Int,
+  inteligencia :: Int,
+  fuerza :: Int
+} deriving (Show, Eq)
+
+data Pocion = Pocion {
+  nombrePocion :: String,
+  ingredientes :: [Ingrediente]
+}
+
+type Efecto = Persona -> Persona
+
+data Ingrediente = Ingrediente {
+  nombreIngrediente :: String,
+  efectos :: [Efecto]
+}
+
+nombresDeIngredientesProhibidos = [
+ "sangre de unicornio",
+ "veneno de basilisco",
+ "patas de cabra",
+ "efedrina"]
+
+maximoSegun :: Ord b => (a -> b) -> [a] -> a
+-- casos base
+maximoSegun _ [ x ] = x  
+maximoSegun  f ( x : y : xs)
+  | f x > f y = maximoSegun f (x:xs)
+  | otherwise = maximoSegun f (y:xs)
+
+  sumaDeNiveles :: Persona -> int
+--   sumaDeNiveles persona = suerte persona + inteligencia persona + fuerza persona
+    sumaDeNiveles persona = sum . niveles persona
+
+  diferenciaDeNiveles:: Persona->interact
+    
+    diferenciaDeNiveles persona = (maximum . niveles)persona - (minimun . niveles) persona
+
+  niveles persona = [suerte persona + inteligencia persona + fuerza persona]
+
+  nivelesMayoresA:: Persona-> int -> int
+
+  nivelesMayoresA persona cotaInferior = (length . filter (>cotaInferior).niveles)persona
